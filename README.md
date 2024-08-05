@@ -1,1 +1,1 @@
-# learn-github-actions
+# Lean Github Actions
