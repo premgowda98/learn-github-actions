@@ -1,10 +1,15 @@
 name: First Workflow
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "name input"
+        required: true
 jobs:
   first-job:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Print Greeting
-        run: echo "Hello World"
+      - name: print-input
+        run: echo "print input ${{ github.event.inputs.name}}"
       - name: Print Greeting 2
         run: echo "Hello World 2"

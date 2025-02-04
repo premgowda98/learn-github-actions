@@ -1,0 +1,38 @@
+name: Variables and Contexts
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+
+env:
+  HOST: 9006
+
+jobs:
+  job-1:
+    runs-on: self-hosted
+    outputs:
+      output1: ${{ steps.step1.outputs.somevar}}
+    steps:
+      - name: "Github context"
+        id: step1
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github)}}
+        run: |
+          echo "github context: $GITHUB_CONTEXT"
+          echo "somevar=value" >> $GITHUB_OUTPUT
+      - name: "Github context 2"
+        run: |
+          echo "var from step1: ${{ steps.step1.outputs.somevar }}"
+
+  job-2:
+    runs-on: self-hosted
+    needs: job-1
+    steps:
+      - name: "Context"
+        run: |
+          echo "github context in job 2 ${{ toJson(github) }}"
+      - name: "Read vars from job1"
+        run: |
+          echo "outputs output1: ${{ needs.job-1.outputs.output1 }}"
