@@ -47,6 +47,8 @@
 2. If a job B is dependent on job A and job A fails, job B does not run
 3. But if a job B has `if: always()` condition, irrespective of whether job A was successful or not job B runs
 4. Job fails even if one step fails
+5. Artifacts and Outputs
+6. Cache Dependency
 
 ## Steps
 

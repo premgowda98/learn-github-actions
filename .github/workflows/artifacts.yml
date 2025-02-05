@@ -14,3 +14,14 @@ jobs:
         with:
           name: my-artifact
           path: README.md
+
+  job2:
+    runs-on: self-hosted
+    needs: job1
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Output content
+        run: ls

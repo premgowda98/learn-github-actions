@@ -29,6 +29,8 @@ jobs:
   job-2:
     runs-on: self-hosted
     needs: job-1
+    env:
+      SOME_SECRET: ${{ secrets.SOME_SECRET }}
     steps:
       - name: "Context"
         run: |
@@ -36,3 +38,6 @@ jobs:
       - name: "Read vars from job1"
         run: |
           echo "outputs output1: ${{ needs.job-1.outputs.output1 }}"
+      - name: "Read secrets"
+        run: |
+          echo "secrets: ${{ env.SOME_SECRET }}" 
