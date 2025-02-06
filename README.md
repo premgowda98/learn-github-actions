@@ -59,3 +59,40 @@
 ## [Github Context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs)
 
 > **Note**: In order to skip the workflow trigerr, the following comming message can be followed "some messae [skip ci]"
+
+## Enviroments
+
+1. Attached to Repository
+2. Available in Free Plan for Public Repo
+3. Workflow jobs can target environment
+4. Environments can have specific secrets
+
+## Conditions
+
+1. On both Jobs and steps
+    1. `if`
+    2. **if** has 4 special functions
+        1. failure -> return true if prev step or job failed
+        2. always
+        3. success -> return true if prev step or job succeded
+        4. cancelled -> return true if prev step or job cancelled
+    3. `continue-on-error`
+    4. Should be specified on the steps which may fail
+
+## Matrix
+
+1. Defined at Job level
+2. Can be used in jobs and steps
+
+## Reusable Workflow
+
+1. Can be used in other workflows
+2. Can take inputs and provide outputs as well
+
+## Containers
+1. Jobs can be ran on the containers on the vms
+2. Service Containers
+    1. Can be used for testing like database
+    2. Job steps can communicate with the service containers
+3. If service container and container for job runned together, then communication between them is super simple. It works similar to docker networking where service container can be accessed by its name.
+4. If using only service container then to access this container use localhost:port of the service continer

@@ -1,0 +1,16 @@
+name: Use reuse workflow
+
+on: workflow_dispatch
+
+jobs:
+  job1:
+    uses: ./.github/workflows/reuable.yml
+    with:
+      name: "gowda"
+  job2:
+    runs-on: self-hosted
+    needs: job1
+    steps:
+      - name: "read output from job1"
+        run: |
+          echo "output from job1: ${{ needs.job1.outputs.result-age }}"

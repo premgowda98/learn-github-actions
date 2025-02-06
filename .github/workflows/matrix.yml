@@ -1,0 +1,20 @@
+name: Matrix
+
+on: workflow_dispatch
+
+jobs:
+  job1:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, self-hosted]
+        python-version: [3.6, 3.8, 3.10]
+        include: # include is used to run only one combination of the matrix
+          - python-version: 3.11
+            os: ubuntu-latest
+        exclude: # exclude is used to exclude a combination of the matric
+          - python-version: 3.12
+            os: self-hosted
+    runs-on: ${{ matrix.os}}
+    steps:
+      - name: step1
+        run: echo "step1"

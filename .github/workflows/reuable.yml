@@ -1,0 +1,27 @@
+name: Reusable
+
+on: 
+  workflow_call:
+    inputs:
+      name:
+        description: "name input"
+        required: true
+        default: "prem"
+        type: string
+    outputs:
+      result-age:
+        description: "age output"
+        value: ${{ jobs.job-reuse.outputs.outcome}}
+
+jobs:
+  job-reuse:
+    outputs:
+      outcome: ${{ steps.step-output.outputs.age-output}} 
+    runs-on: self-hosted
+    steps:
+      - name: step-reuse
+        run: echo "from reuable workflow and input name is ${{ inputs.name}}"
+      - name: return-output
+        id: step-output
+        run: echo "age-output=25" >> $GITHUB_OUTPUT
+              
