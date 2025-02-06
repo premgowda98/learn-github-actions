@@ -1,0 +1,14 @@
+name: "Using Custom Composite Actions"
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: step1
+        uses: ./.github/actions/composite
+        with:
+          name: "gowda"
+          
+

@@ -1,0 +1,11 @@
+name: "Docker Custom Action"
+description: "Create a custom action using docker"
+inputs:
+  name:
+    description: "input for actions"
+outputs:
+  output-from-container:
+    description: "output from container"
+runs:
+  using: "docker"
+  image: "Dockerfile"

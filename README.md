@@ -96,3 +96,21 @@
     2. Job steps can communicate with the service containers
 3. If service container and container for job runned together, then communication between them is super simple. It works similar to docker networking where service container can be accessed by its name.
 4. If using only service container then to access this container use localhost:port of the service continer
+
+## Custom Actions
+
+1. 3 Ways
+    1. Javascript Actions -> Using Javascript
+    2. Docker Actions -> Using Docker
+    3. Composite Actions -> Combining Workflows, Jobs
+2. While using custom actions, the code has to be checked out mandatoriliry
+3. Composite Actions
+    1. Can be defined same repo or in different repo
+    2. Can have inputs and outputs simillar for reuseable workflows
+4. JS Actions
+    1. Do `npm init && npm install @actions/core @actions/github @actions/exec`
+    2. These are the dependecies do build custom JS Actions
+    3. **node_modules** should not be gitignored
+5. Docker Actions
+    1. For inputs in docker actions, inouts will be prefixed with INPUT_ and all uppercase
+

@@ -1,0 +1,14 @@
+name: "Composite Custom Action"
+description: "Creating a Custom Action"
+inputs:
+  name:
+    description: "input for custom Action"
+runs:
+  using: "composite"
+  steps:
+    - name: custom-action-step1
+      run: echo hi
+      shell: bash
+    - name: custom-action-step2
+      run: echo "${{ inputs.name}}"
+      shell: bash

@@ -1,0 +1,17 @@
+name: "Using Custom Docker Actions"
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: step1
+        id: step-action
+        uses: ./.github/actions/docker
+        with:
+          name: "gowda"
+      - name: step2
+        run: echo "output from container is ${{ steps.step-action.outputs.output-from-container}}"
+          
+
